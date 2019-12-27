@@ -1,13 +1,5 @@
-const mongoose = require("mongoose");
 const debug = require("debug")("database");
-
-const customerSchema = new mongoose.Schema({
-  isGold: { type: Boolean, required: true },
-  name: { type: String, required: true, minlength: 2, maxlength: 50 },
-  phone: { type: String, required: true, minlength: 11, maxlength: 11 }
-});
-
-const Customer = mongoose.model("Customer", customerSchema);
+const { Customer } = require("../models/customer");
 
 // Check validation triggers on create request (comes back in the response) (besides joi validation)
 

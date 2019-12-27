@@ -1,5 +1,5 @@
 const express = require("express");
-const Joi = require("joi");
+const { validateCustomer } = require("../models/customer");
 const {
   createCustomer,
   getCustomer,
@@ -9,17 +9,6 @@ const {
 } = require("../db/customersDB");
 
 const router = express.Router();
-
-const validateCustomer = genre => {
-  const schema = {
-    isGold: Joi.bool().required(),
-    name: Joi.string().required(),
-    phone: Joi.string()
-      .length(11)
-      .required()
-  };
-  return Joi.validate(genre, schema);
-};
 
 router.post("/", async (req, res) => {
   const { error } = validateCustomer(req.body);
