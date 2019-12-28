@@ -1,13 +1,5 @@
-const mongoose = require("mongoose");
 const debug = require("debug")("database");
-
-const genreSchema = new mongoose.Schema({
-  name: { type: String, required: true, minlength: 2, maxlength: 50 }
-});
-
-const Genre = mongoose.model("Genre", genreSchema);
-
-// CRUD operations for genre collection in MongoDB
+const { Genre } = require("../models/genre");
 
 const createGenre = async name => {
   const genre = new Genre({

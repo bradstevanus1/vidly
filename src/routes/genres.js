@@ -1,5 +1,5 @@
 const express = require("express");
-const Joi = require("joi");
+const { validateGenre } = require("../models/genre");
 const {
   createGenre,
   getGenre,
@@ -9,15 +9,6 @@ const {
 } = require("../db/genresDB");
 
 const router = express.Router();
-
-const validateGenre = genre => {
-  const schema = {
-    name: Joi.string().required()
-  };
-  return Joi.validate(genre, schema);
-};
-
-// CRUD operations for genre API
 
 router.post("/", async (req, res) => {
   const { error } = validateGenre(req.body);

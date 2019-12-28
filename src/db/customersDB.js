@@ -1,8 +1,6 @@
 const debug = require("debug")("database");
 const { Customer } = require("../models/customer");
 
-// Check validation triggers on create request (comes back in the response) (besides joi validation)
-
 const createCustomer = async customerObj => {
   const customerDocument = new Customer(customerObj);
   try {
