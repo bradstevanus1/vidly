@@ -1,5 +1,5 @@
 const express = require("express");
-const { validateGenre } = require("../models/genre");
+const { validateGenre } = require("../models/genreModel");
 const {
   createGenre,
   getGenre,

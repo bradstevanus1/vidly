@@ -1,5 +1,5 @@
 const debug = require("debug")("database");
-const { Customer } = require("../models/customer");
+const { Customer } = require("../models/customerModel");
 
 const createCustomer = async customerObj => {
   const customerDocument = new Customer(customerObj);

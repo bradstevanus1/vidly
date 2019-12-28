@@ -1,5 +1,5 @@
 const express = require("express");
-const { validateCustomer } = require("../models/customer");
+const { validateCustomer } = require("../models/customerModel");
 const {
   createCustomer,
   getCustomer,

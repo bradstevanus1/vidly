@@ -2,9 +2,9 @@ const mongoose = require("mongoose");
 const debugDB = require("debug")("database");
 const express = require("express");
 
-const homeRoutes = require("./routes/home");
-const genresRoutes = require("./routes/genres");
-const customersRoutes = require("./routes/customers");
+const homeRoutes = require("./routes/homeRoute");
+const genresRoutes = require("./routes/genresRoute");
+const customersRoutes = require("./routes/customersRoute");
 
 const app = express();
 
