@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const debugDB = require("debug")("database");
+const debugServer = require("debug")("server");
 const express = require("express");
 
 const homeRoutes = require("./routes/homeRoute");
@@ -21,4 +22,4 @@ app.use("/", homeRoutes);
 app.use("/api/genres", genresRoutes);
 app.use("/api/customers", customersRoutes);
 
-app.listen(port, () => console.log(`Listening on port ${port}...`));
+app.listen(port, () => debugServer(`Listening on port ${port}...`));
