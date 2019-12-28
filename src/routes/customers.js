@@ -1,12 +1,12 @@
 const express = require("express");
-const { validateCustomer } = require("../models/customerModel");
+const { validateCustomer } = require("../models/customer");
 const {
   createCustomer,
   getCustomer,
   getAllCustomers,
   updateCustomer,
   deleteCustomer
-} = require("../db/customersDB");
+} = require("../db/customers");
 
 const router = express.Router();
 

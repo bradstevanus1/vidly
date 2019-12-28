@@ -1,0 +1,18 @@
+{
+  "db.create.success": "SUCCESS: Create",
+  "db.create.error": "ERROR: Create",
+  "db.get.success": "SUCCESS: Get ID",
+  "db.get.warn": "WARN: Get - Did not find document with ID",
+  "db.get.error": "ERROR: Get ID",
+  "db.get.all.success": "SUCCESS: Get all",
+  "db.get.all.error": "ERROR: Get all",
+  "db.update.success": "SUCCESS: Update ID",
+  "db.update.warn": "WARN: Update - Did not find document with ID",
+  "db.update.error": "ERROR: Update ID",
+  "db.delete.success": "SUCCESS: Delete ID",
+  "db.delete.warn": "WARN: Delete - Did not find document with ID",
+  "db.delete.error": "ERROR: Delete ID",
+  "db.customers": "Customers",
+  "db.genres": "Genres",
+  "db.movies": "Movies"
+}

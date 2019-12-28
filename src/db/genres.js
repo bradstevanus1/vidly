@@ -1,5 +1,5 @@
 const debug = require("debug")("database");
-const { Genre } = require("../models/genreModel");
+const { Genre } = require("../models/genre");
 
 const createGenre = async name => {
   const genre = new Genre({

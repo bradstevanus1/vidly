@@ -1,12 +1,12 @@
 const express = require("express");
-const { validateGenre } = require("../models/genreModel");
+const { validateGenre } = require("../models/genre");
 const {
   createGenre,
   getGenre,
   getAllGenres,
   updateGenre,
   deleteGenre
-} = require("../db/genresDB");
+} = require("../db/genres");
 
 const router = express.Router();
 

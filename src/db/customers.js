@@ -1,5 +1,5 @@
 const debug = require("debug")("database");
-const { Customer } = require("../models/customerModel");
+const { Customer } = require("../models/customer");
 
 const createCustomer = async customerObj => {
   const customerDocument = new Customer(customerObj);
@@ -8,7 +8,7 @@ const createCustomer = async customerObj => {
     debug("SUCCESS: Created customer:", customer);
     return customer;
   } catch (err) {
-    debug("ERROR: An excpetion occured while creating a customer:", err);
+    debug("ERROR: An exception occured while creating a customer:", err);
   }
 };
 
@@ -32,7 +32,7 @@ const getAllCustomers = async () => {
     debug("SUCCESS: Got customers:", customers);
     return customers;
   } catch (err) {
-    debug("ERROR: An expection occured while trying to get customers:", err);
+    debug("ERROR: An exception occured while trying to get customers:", err);
   }
 };
 
