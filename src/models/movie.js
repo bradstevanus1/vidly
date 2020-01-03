@@ -56,4 +56,4 @@ const validateMovie = movie => {
   return Joi.validate(movie, schema);
 };
 
-module.exports = { Movie, validateMovie };
+module.exports = { movieSchema, Movie, validateMovie };

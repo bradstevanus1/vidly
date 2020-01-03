@@ -29,4 +29,4 @@ const validateCustomer = customerObj => {
   return Joi.validate(customerObj, schema);
 };
 
-module.exports = { Customer, validateCustomer };
+module.exports = { customerSchema, Customer, validateCustomer };

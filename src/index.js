@@ -7,6 +7,7 @@ const homeRoute = require("./routes/home");
 const genresRoute = require("./routes/genres");
 const customersRoute = require("./routes/customers");
 const moviesRoute = require("./routes/movies");
+const rentalsRoute = require("./routes/rentals");
 
 const app = express();
 
@@ -23,5 +24,6 @@ app.use("/", homeRoute);
 app.use("/api/genres", genresRoute);
 app.use("/api/customers", customersRoute);
 app.use("/api/movies", moviesRoute);
+app.use("/api/rentals", rentalsRoute);
 
 app.listen(port, () => debugServer(`Listening on port ${port}...`));
