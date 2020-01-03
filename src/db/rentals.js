@@ -50,6 +50,7 @@ const getAllRentals = async () => {
     debug(DBMessage.getAllError(DBName), err);
   }
 };
+
 module.exports = {
   createRental,
   getRental,

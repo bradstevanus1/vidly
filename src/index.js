@@ -1,4 +1,5 @@
 const Joi = require("joi");
+// Add MongoDB objectID validation to Joi API validation
 Joi.objectId = require("joi-objectid")(Joi);
 const mongoose = require("mongoose");
 const debugDB = require("debug")("database");
@@ -10,6 +11,7 @@ const genresRoute = require("./routes/genres");
 const customersRoute = require("./routes/customers");
 const moviesRoute = require("./routes/movies");
 const rentalsRoute = require("./routes/rentals");
+const usersRoute = require("./routes/users");
 
 const app = express();
 
@@ -22,10 +24,12 @@ mongoose
   .catch(err => debugDB("Could not connect to MongoDb...", err));
 
 app.use(express.json());
+
 app.use("/", homeRoute);
 app.use("/api/genres", genresRoute);
 app.use("/api/customers", customersRoute);
 app.use("/api/movies", moviesRoute);
 app.use("/api/rentals", rentalsRoute);
+app.use("/api/users", usersRoute);
 
 app.listen(port, () => debugServer(`Listening on port ${port}...`));
