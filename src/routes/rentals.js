@@ -1,4 +1,5 @@
 const express = require("express");
+const auth = require("../middleware/auth");
 const { validateRental } = require("../models/rental");
 const { getCustomer } = require("../db/customers");
 const { getMovie } = require("../db/movies");
@@ -6,7 +7,7 @@ const { createRental, getRental, getAllRentals } = require("../db/rentals");
 
 const router = express.Router();
 
-router.post("/", async (req, res) => {
+router.post("/", auth, async (req, res) => {
   const { error } = validateRental(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 
