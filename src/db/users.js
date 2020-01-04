@@ -1,3 +1,4 @@
+const bcrypt = require("bcrypt");
 const debug = require("debug")("database");
 const { User } = require("../models/user");
 const { DBMessage } = require("../utils/general");
@@ -8,6 +9,10 @@ const DBName = "Users";
 const createUser = async userObj => {
   try {
     const userDocument = new User(userObj);
+
+    const salt = await bcrypt.genSalt(10);
+    userDocument.password = await bcrypt.hash(userDocument.password, salt);
+
     const user = await userDocument.save();
     debug(DBMessage.createSuccess(DBName), user);
     return user;
