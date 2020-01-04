@@ -1,3 +1,4 @@
+const config = require("config");
 const Joi = require("joi");
 // Add MongoDB objectID validation to Joi API validation
 Joi.objectId = require("joi-objectid")(Joi);
@@ -18,6 +19,11 @@ const app = express();
 
 const TEST_PORT = 3000;
 const port = process.env.PORT || TEST_PORT;
+
+if (!config.get("jwtPrivateKey")) {
+  debugServer("FATAL ERROR: jwtPrivateKey is not defined.");
+  process.exit(1);
+}
 
 mongoose
   .connect("mongodb://localhost/vidly")
