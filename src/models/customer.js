@@ -13,7 +13,7 @@ const Customer = mongoose.model("Customer", customerSchema);
 
 // Customer object validation for request body sent in API
 
-const validateCustomer = customerObj => {
+function validateCustomer(customerObj) {
   const schema = {
     name: Joi.string()
       .min(2)
@@ -27,6 +27,6 @@ const validateCustomer = customerObj => {
       .required()
   };
   return Joi.validate(customerObj, schema);
-};
+}
 
 module.exports = { customerSchema, Customer, validateCustomer };

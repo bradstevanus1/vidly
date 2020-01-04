@@ -5,8 +5,8 @@ const { DBMessage } = require("../utils/general");
 
 const DBName = "Users";
 
-// TODO: put all document creation in the try {} block
-const createUser = async userObj => {
+// TODO: put all document creation in the try {} block (for other APIs)
+async function createUser(userObj) {
   try {
     const userDocument = new User(userObj);
 
@@ -19,9 +19,9 @@ const createUser = async userObj => {
   } catch (err) {
     debug(DBMessage.createError(DBName), err);
   }
-};
+}
 
-const getUserWithSelector = async selector => {
+async function getUserWithSelector(selector) {
   try {
     const user = await User.findOne(selector);
     if (user) debug(DBMessage.getSuccess(DBName), user);
@@ -30,7 +30,7 @@ const getUserWithSelector = async selector => {
   } catch (err) {
     debug(DBMessage.getError(DBName), selector, err);
   }
-};
+}
 
 module.exports = {
   createUser,

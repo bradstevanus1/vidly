@@ -1,7 +1,7 @@
 const debug = require("debug")("database");
 const { Genre } = require("../models/genre");
 
-const createGenre = async name => {
+async function createGenre(name) {
   const genre = new Genre({
     name: name
   });
@@ -12,9 +12,9 @@ const createGenre = async name => {
   } catch (err) {
     debug("ERROR: Failed to save to genres collection:", err);
   }
-};
+}
 
-const getGenre = async id => {
+async function getGenre(id) {
   try {
     const genre = await Genre.findById(id);
     if (genre) debug(`SUCCESS: Got genre with ID ${id}:`, genre);
@@ -23,9 +23,9 @@ const getGenre = async id => {
   } catch (err) {
     debug(`ERROR: Failed to get genre with ID ${id}:`, err);
   }
-};
+}
 
-const getAllGenres = async () => {
+async function getAllGenres() {
   try {
     const genres = await Genre.find().sort("name");
     debug("SUCCESS: Got genres:", genres);
@@ -33,9 +33,9 @@ const getAllGenres = async () => {
   } catch (err) {
     debug("ERROR: Failed to get genres collection:", err);
   }
-};
+}
 
-const updateGenre = async (id, name) => {
+async function updateGenre(id, name) {
   try {
     const genre = await Genre.findByIdAndUpdate(
       id,
@@ -48,9 +48,9 @@ const updateGenre = async (id, name) => {
   } catch (err) {
     debug(`ERROR: Failed to update genre with ID ${id}`, err);
   }
-};
+}
 
-const deleteGenre = async id => {
+async function deleteGenre(id) {
   try {
     const genre = await Genre.findByIdAndRemove(id);
     if (genre) debug(`SUCCESS: Deleted genre with ID ${id}:`, genre);
@@ -59,7 +59,7 @@ const deleteGenre = async id => {
   } catch (err) {
     debug(`ERROR: Failed to delete genre with ID ${id}`, err);
   }
-};
+}
 
 module.exports = {
   createGenre,

@@ -1,7 +1,7 @@
 const debug = require("debug")("database");
 const { Customer } = require("../models/customer");
 
-const createCustomer = async customerObj => {
+async function createCustomer(customerObj) {
   const customerDocument = new Customer(customerObj);
   try {
     const customer = await customerDocument.save();
@@ -10,9 +10,9 @@ const createCustomer = async customerObj => {
   } catch (err) {
     debug("ERROR: An exception occured while creating a customer:", err);
   }
-};
+}
 
-const getCustomer = async id => {
+async function getCustomer(id) {
   try {
     const customer = await Customer.findById(id);
     if (customer) debug(`SUCCESS: Got customer with ID ${id}:`, customer);
@@ -24,9 +24,9 @@ const getCustomer = async id => {
       err
     );
   }
-};
+}
 
-const getAllCustomers = async () => {
+async function getAllCustomers() {
   try {
     const customers = await Customer.find().sort("name");
     debug("SUCCESS: Got customers:", customers);
@@ -34,9 +34,9 @@ const getAllCustomers = async () => {
   } catch (err) {
     debug("ERROR: An exception occured while trying to get customers:", err);
   }
-};
+}
 
-const updateCustomer = async (id, customerObj) => {
+async function updateCustomer(id, customerObj) {
   try {
     const customer = await Customer.findByIdAndUpdate(id, customerObj, {
       new: true
@@ -50,9 +50,9 @@ const updateCustomer = async (id, customerObj) => {
       err
     );
   }
-};
+}
 
-const deleteCustomer = async id => {
+async function deleteCustomer(id) {
   try {
     const customer = await Customer.findByIdAndRemove(id);
     if (customer) debug(`SUCCESS: Deleted customer with ID ${id}:`, customer);
@@ -64,7 +64,7 @@ const deleteCustomer = async id => {
       err
     );
   }
-};
+}
 
 module.exports = {
   createCustomer,

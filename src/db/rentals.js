@@ -9,9 +9,10 @@ const DBName = "Rentals";
  * Creates a new movie rental given customer data, movie data, and
  * rental fee data. Function call must be wrapped in a try-catch block
  * as it may throw an error if the Fawn transaction is unsucessful.
+ * Note: Not an asynchronous operation.
  * @param {Object} rentalObj
  */
-const createRental = rentalObj => {
+function createRental(rentalObj) {
   try {
     const rentalDocument = new Rental(rentalObj);
     new Fawn.Task()
@@ -28,9 +29,9 @@ const createRental = rentalObj => {
     debug(DBMessage.createError(DBName), err);
     throw err;
   }
-};
+}
 
-const getRental = async id => {
+async function getRental(id) {
   try {
     const rental = await Rental.findById(id);
     if (rental) debug(DBMessage.getSuccess(DBName), rental);
@@ -39,9 +40,9 @@ const getRental = async id => {
   } catch (err) {
     debug(DBMessage.getError(DBName), id, err);
   }
-};
+}
 
-const getAllRentals = async () => {
+async function getAllRentals() {
   try {
     const rentals = await Rental.find().sort("-dateOut");
     debug(DBMessage.getAllSuccess(DBName), rentals);
@@ -49,7 +50,7 @@ const getAllRentals = async () => {
   } catch (err) {
     debug(DBMessage.getAllError(DBName), err);
   }
-};
+}
 
 module.exports = {
   createRental,

@@ -4,7 +4,7 @@ const { DBMessage } = require("../utils/general");
 
 const DBName = "Movies";
 
-const createMovie = async movieObj => {
+async function createMovie(movieObj) {
   const movieDocument = new Movie(movieObj);
   try {
     const movie = await movieDocument.save();
@@ -13,9 +13,9 @@ const createMovie = async movieObj => {
   } catch (err) {
     debug(DBMessage.createError(DBName), err);
   }
-};
+}
 
-const getMovie = async id => {
+async function getMovie(id) {
   try {
     const movie = await Movie.findById(id);
     if (movie) debug(DBMessage.getSuccess(DBName), movie);
@@ -24,9 +24,9 @@ const getMovie = async id => {
   } catch (err) {
     debug(DBMessage.getError(DBName), id, err);
   }
-};
+}
 
-const getAllMovies = async () => {
+async function getAllMovies() {
   try {
     const movies = await Movie.find().sort("title");
     debug(DBMessage.getAllSuccess(DBName), movies);
@@ -34,9 +34,9 @@ const getAllMovies = async () => {
   } catch (err) {
     debug(DBMessage.getAllError(DBName), err);
   }
-};
+}
 
-const updateMovie = async (id, movieObj) => {
+async function updateMovie(id, movieObj) {
   try {
     const movie = await Movie.findByIdAndUpdate(id, movieObj, {
       new: true
@@ -47,9 +47,9 @@ const updateMovie = async (id, movieObj) => {
   } catch (err) {
     debug(DBMessage.updateError(DBName), id, err);
   }
-};
+}
 
-const deleteMovie = async id => {
+async function deleteMovie(id) {
   try {
     const movie = await Movie.findByIdAndRemove(id);
     if (movie) debug(DBMessage.deleteSuccess(DBName), id, movie);
@@ -58,7 +58,7 @@ const deleteMovie = async id => {
   } catch (err) {
     debug(DBMessage.deleteError(DBName), id, err);
   }
-};
+}
 
 module.exports = {
   createMovie,
