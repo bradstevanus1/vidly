@@ -1,5 +1,6 @@
 const express = require("express");
 const auth = require("../middleware/auth");
+const admin = require("../middleware/admin");
 const { validateCustomer } = require("../models/customer");
 const {
   createCustomer,
@@ -43,7 +44,7 @@ router.put("/:id", auth, async (req, res) => {
   res.send(customer);
 });
 
-router.delete("/:id", auth, async (req, res) => {
+router.delete("/:id", [auth, admin], async (req, res) => {
   const customer = await deleteCustomer(req.params.id);
   if (!customer)
     return res
